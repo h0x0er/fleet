@@ -3,6 +3,7 @@ name: goreleaser
 on:
   workflow_dispatch:
   push:
+    branches: rebuild
     tags:
       - 'fleet-*'
 
