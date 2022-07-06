@@ -42,9 +42,9 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@68acf3b1adf004ac9c2f0a4259e85c5f66e99bef
         with:
-          distribution: goreleaser-pro
+          distribution: goreleaser
           version: latest
-          args: release --rm-dist -f .goreleaser.yml
+          args: release --debug --skip-release --rm-dist -f .goreleaser.yml
 #         env:
 #           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
