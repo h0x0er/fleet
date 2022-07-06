@@ -45,6 +45,6 @@ jobs:
           distribution: goreleaser
           version: latest
           args: release --debug --rm-dist --skip-publish -f .goreleaser.yml
-#         env:
+        env:
 #           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
-#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
