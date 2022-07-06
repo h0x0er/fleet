@@ -1,6 +1,7 @@
 name: goreleaser
 
 on:
+  workflow_dispatch:
   push:
     tags:
       - 'fleet-*'
@@ -18,13 +19,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@629c2de402a417ea7690ca6ce3f33229e27606a5 # v2
         with:
+          ref: 865ab32d03c37e8a74e811bc5ac697202f14e455
           fetch-depth: 0 # Needed for goreleaser
 
-      - name: Login to Docker Hub
-        uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b # v1.10.0
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
+#       - name: Login to Docker Hub
+#         uses: docker/login-action@49ed152c8eca782a232dede0303416e8f356c37b # v1.10.0
+#         with:
+#           username: ${{ secrets.DOCKERHUB_USERNAME }}
+#           password: ${{ secrets.DOCKERHUB_ACCESS_TOKEN }}
 
       - name: Set up Go
         uses: actions/setup-go@b22fbbc2921299758641fab08929b4ac52b32923 # v2
@@ -40,9 +42,9 @@ jobs:
       - name: Run GoReleaser
         uses: goreleaser/goreleaser-action@68acf3b1adf004ac9c2f0a4259e85c5f66e99bef
         with:
-          distribution: goreleaser-pro
+          distribution: goreleaser
           version: latest
-          args: release --rm-dist -f .goreleaser.yml
-        env:
-          GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          args: release --debug --rm-dist --skip-publish -f .goreleaser.yml
+#         env:
+#           GORELEASER_KEY: ${{ secrets.GORELEASER_KEY }}
+#           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
