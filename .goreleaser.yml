@@ -49,10 +49,10 @@ builds:
       - -trimpath
     ldflags:
       - -X github.com/kolide/kit/version.appName={{ .ArtifactName }}
-      - -X github.com/kolide/kit/version.version={{ .Version }}
-      - -X github.com/kolide/kit/version.branch={{ .Branch }}
-      - -X github.com/kolide/kit/version.revision={{ .FullCommit }}
-      - -X github.com/kolide/kit/version.buildDate={{ time "2006-01-02" }}
+      - -X github.com/kolide/kit/version.version=4.16.0
+      - -X github.com/kolide/kit/version.branch=HEAD
+      - -X github.com/kolide/kit/version.revision=865ab32d03c37e8a74e811bc5ac697202f14e455
+      - -X github.com/kolide/kit/version.buildDate=2022-06-21
       - -X github.com/kolide/kit/version.buildUser={{ .Env.USER }}
 
 archives:
